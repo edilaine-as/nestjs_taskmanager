@@ -1,0 +1,26 @@
+### list tasks
+GET http://localhost:3003/tasks
+
+### get task
+GET http://localhost:3003/tasks/1
+
+### insert task
+POST http://localhost:3003/tasks
+Content-Type: application/json
+
+{
+    "title": "POO",
+    "status": "pending",
+    "priority": "medium"
+}
+
+### update task
+PATCH http://localhost:3003/tasks/1
+Content-Type: application/json
+
+{
+    "title": "Estrutura de dados"
+}
+
+### delete task
+DELETE http://localhost:3003/tasks/1
