@@ -1,6 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BeforeInsert, PrimaryColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { User } from './user.entity';
 
-const { nanoid } = require('nanoid');
+export enum TaskStatus {
+    PENDING = 'pending',
+    IN_PROGRESS = 'in_progress',
+    DONE = 'done',
+}
+
+export enum TaskPriority {
+    LOW = 'low',
+    MEDIUM = 'medium',
+    HIGH = 'high',
+    }
 
 @Entity('tasks') // nome da tabela no banco
 export class Task {
@@ -13,8 +24,22 @@ export class Task {
     @Column({ nullable: true })
     description: string;
 
-    @Column({ default: false })
-    completed: boolean;
+    @Column({
+        type: 'enum',
+        enum: TaskStatus,
+        default: TaskStatus.PENDING,
+    })
+    status: TaskStatus;
+
+    @Column({
+        type: 'enum',
+        enum: TaskPriority,
+        default: TaskPriority.MEDIUM,
+    })
+    priority: TaskPriority;
+
+    @Column({ type: 'timestamp', nullable: true })
+    dueDate?: Date;
 
     @CreateDateColumn()
     created_at: Date;
@@ -22,8 +47,6 @@ export class Task {
     @UpdateDateColumn()
     updated_at: Date;
 
-    @BeforeInsert()
-    generateId() {
-        this.id = `task_${nanoid()}`
-    }
+    @ManyToOne(() => User, user => user.tasks, { eager: false }) // eager false = sem join auto
+    user: User;
 }

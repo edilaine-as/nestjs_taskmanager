@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsISO8601, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 enum TaskStatus {
     PENDING = 'pending',
@@ -27,5 +27,7 @@ export class CreateTaskDto {
     @IsEnum(TaskPriority)
     priority: TaskPriority
 
+    @IsOptional()
+    @IsISO8601() // 2025-05-12T15:00:00Z
     dueDate?: string
 }
