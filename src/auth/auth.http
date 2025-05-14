@@ -1,0 +1,8 @@
+### insert task
+POST http://localhost:3003/auth
+Content-Type: application/json
+
+{
+    "email": "edilaine.santos@gmail.com",
+    "password": "123456"
+}

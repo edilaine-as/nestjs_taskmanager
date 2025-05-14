@@ -1,12 +1,15 @@
 ### list tasks
 GET http://localhost:3003/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVkaWxhaW5lLnNhbnRvc0BnbWFpbC5jb20iLCJzdWIiOjEsImlhdCI6MTc0NzEwMTkzMywiZXhwIjoxNzQ3MTA1NTMzfQ.JvPPQaL16Y7wkZQI8CK_6ptwXRVwD1FSoez0_al8tI0
 
 ### get task
-GET http://localhost:3003/tasks/1
+GET http://localhost:3003/tasks/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVkaWxhaW5lLnNhbnRvc0BnbWFpbC5jb20iLCJzdWIiOjEsImlhdCI6MTc0NzEwMTkzMywiZXhwIjoxNzQ3MTA1NTMzfQ.JvPPQaL16Y7wkZQI8CK_6ptwXRVwD1FSoez0_al8tI0
 
 ### insert task
 POST http://localhost:3003/tasks
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVkaWxhaW5lLnNhbnRvc0BnbWFpbC5jb20iLCJzdWIiOjEsImlhdCI6MTc0NzEwMTkzMywiZXhwIjoxNzQ3MTA1NTMzfQ.JvPPQaL16Y7wkZQI8CK_6ptwXRVwD1FSoez0_al8tI0
 
 {
     "title": "POO",
@@ -15,12 +18,14 @@ Content-Type: application/json
 }
 
 ### update task
-PATCH http://localhost:3003/tasks/1
+PATCH http://localhost:3003/tasks/3
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVkaWxhaW5lLnNhbnRvc0BnbWFpbC5jb20iLCJzdWIiOjEsImlhdCI6MTc0NzEwMTkzMywiZXhwIjoxNzQ3MTA1NTMzfQ.JvPPQaL16Y7wkZQI8CK_6ptwXRVwD1FSoez0_al8tI0
 
 {
     "title": "Estrutura de dados"
 }
 
 ### delete task
-DELETE http://localhost:3003/tasks/1
+DELETE http://localhost:3003/tasks/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVkaWxhaW5lLnNhbnRvc0BnbWFpbC5jb20iLCJzdWIiOjEsImlhdCI6MTc0NzEwMTkzMywiZXhwIjoxNzQ3MTA1NTMzfQ.JvPPQaL16Y7wkZQI8CK_6ptwXRVwD1FSoez0_al8tI0

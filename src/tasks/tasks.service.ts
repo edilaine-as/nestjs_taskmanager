@@ -9,36 +9,36 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class TasksService {
   constructor(
     @InjectRepository(Task)
-    private readonly repository: Repository<Task>
-  ){}
+    private readonly taskRepository: Repository<Task>,
+  ) {}
 
   create(createTaskDto: CreateTaskDto) {
-    const task = this.repository.create(createTaskDto)
-    return this.repository.save(task)
+    const task = this.taskRepository.create(createTaskDto);
+    return this.taskRepository.save(task);
   }
 
   findAll() {
-    return this.repository.find()
+    return this.taskRepository.find();
   }
 
   findOne(id: string) {
-    return this.repository.findOneBy({ id })
+    return this.taskRepository.findOneBy({ id });
   }
 
   async update(id: string, updateTaskDto: UpdateTaskDto) {
-    const task = await this.repository.findOneBy({ id })
+    const task = await this.taskRepository.findOneBy({ id });
 
-    if(!task) return null
+    if (!task) return null;
 
-    this.repository.merge(task, updateTaskDto)
-    return this.repository.save(task)
+    this.taskRepository.merge(task, updateTaskDto);
+    return this.taskRepository.save(task);
   }
 
   async remove(id: string) {
-    const task = await this.repository.findOneBy({ id })
+    const task = await this.taskRepository.findOneBy({ id });
 
-    if(!task) return null
+    if (!task) return null;
 
-    this.repository.remove(task)
+    this.taskRepository.remove(task);
   }
 }
