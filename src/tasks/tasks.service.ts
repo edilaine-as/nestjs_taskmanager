@@ -7,28 +7,25 @@ import { TasksRepository } from './tasks.repository';
 
 @Injectable()
 export class TasksService {
-  constructor(
-    @InjectRepository(Task)
-    private readonly taskRepository: TasksRepository,
-  ) {}
+  constructor(private readonly taskRepository: TasksRepository) {}
 
-  create(createTaskDto: CreateTaskDto) {
-    return this.taskRepository.create(createTaskDto);
+  async create(createTaskDto: CreateTaskDto) {
+    return await this.taskRepository.create(createTaskDto);
   }
 
-  findAll() {
-    return this.taskRepository.findAll();
+  async findAll() {
+    return await this.taskRepository.findAll();
   }
 
-  findOne(id: string) {
-    return this.taskRepository.findById(id);
+  async findOne(id: string) {
+    return await this.taskRepository.findById(id);
   }
 
   async update(id: string, updateTaskDto: UpdateTaskDto) {
-    return this.taskRepository.update(id, updateTaskDto);
+    return await this.taskRepository.update(id, updateTaskDto);
   }
 
   async remove(id: string) {
-    return this.taskRepository.remove(id);
+    return await this.taskRepository.remove(id);
   }
 }

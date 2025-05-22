@@ -12,17 +12,17 @@ export class TasksRepository {
     private readonly repo: Repository<Task>,
   ) {}
 
-  create(createTaskDto: CreateTaskDto) {
+  async create(createTaskDto: CreateTaskDto) {
     const task = this.repo.create(createTaskDto);
-    return this.repo.save(task);
+    return await this.repo.save(task);
   }
 
-  findAll() {
-    return this.repo.find();
+  async findAll() {
+    return await this.repo.find();
   }
 
-  findById(id: string) {
-    return this.repo.findOneBy({ id });
+  async findById(id: string) {
+    return await this.repo.findOneBy({ id });
   }
 
   async update(id: string, updateTaskDto: UpdateTaskDto) {
@@ -31,7 +31,7 @@ export class TasksRepository {
     if (!task) return null;
 
     this.repo.merge(task, updateTaskDto);
-    return this.repo.save(task);
+    return await this.repo.save(task);
   }
 
   async remove(id: string) {
@@ -39,6 +39,6 @@ export class TasksRepository {
 
     if (!task) return null;
 
-    return this.repo.remove(task);
+    return await this.repo.remove(task);
   }
 }
